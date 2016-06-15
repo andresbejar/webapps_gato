@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Descripcion de la clase gato -->
+
+	<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+			 xmlns:tns="urn:webapps_gato"
+			 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+			 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			 xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/"
+			 name="webapps_gato"
+			 targetNamespace="urn:webapps_gato">
+
+
+<!-- Tipos complejos -->
+
+	<types>
+		<xsd:schema targetNamespace="urn:webapps_gato"/>
+	</types>
+
+<!-- Mensajes para comunicarse con la clase gato -->
+	<message name="newGameIn"/>
+
+	<message name="newGameOut"/>
+
+	<message name="playIn">
+		<part name="simbolo" type="xsd:int"/>
+		<part name="indice" type="xsd:int"/>
+	</message>
+
+	<message name="playOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="checkWinnerIn"/>
+
+	<message name="checkWinnerOut">
+		<part name="return" type="xsd:boolean"/>
+	</message>
+
+	<message name="getWinnerIn"/>
+		
+	<message name="getWinnerOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="getBoardIn"/>
+
+	<message name="getBoardOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+
+<!-- Puerto para comunicar con la clase gato -->
+	<portType name="webapps_gatoPort">
+		<operation name="newGame">
+			<documentation>Gato::newGame() limpia el tablero e inicia un juego de gato nuevo
+			</documentation>
+			<input message="tns:newGameIn"/>
+			<output message="tns:newGameOut"/>
+		</operation>
+		<operation name="play">
+			<documentation>Gato::play() coloca un 1 o un 0 en una posicion del tablero. Recibe un simbolo (1 o 0) y un indice(mayor que 0 y menor que 9) que representa una posicion en el tablero.
+			</documentation>
+			<input message="tns:playIn"/>
+			<output message="tns:playOut"/>
+		</operation>
+		<operation name="checkWinner">
+			<documentation>Gato::checkWinner() Metodo auxiliar que revisa si existe un ganador en el juego. Retorna verdadero o falso.
+			</documentation>
+			<input message="tns:checkWinnerIn"/>
+			<output message="tns:checkWinnerOut"/>
+		</operation>
+		<operation name="getWinner">
+			<documentation>Gato::getWinner() Retorna el ganador, si existe, de la partida actual.
+			</documentation>
+			<input message="tns:getWinnerIn"/>
+			<output message="tns:getWinnerOut"/>
+		</operation>
+		<operation name="getBoard">
+			<documentation>Gato::getBoard() Metodo auxiliar, retorna la configuracion actual del tablero.
+			</documentation>
+			<input message="tns:getBoardIn"/>
+			<output message="tns:getBoardOut"/>
+		</operation>
+	</portType>
+
+	<!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over HTTP -->
+
+	<binding name="webapps_gatoBinding" type="tns:webapps_gatoPort">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		
+		<operation name="newGame">
+			<soap:operation soapAction="urn:webapps_gato#Gato#newGame"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</output>
+		</operation>
+		
+		<operation name="play">
+			<soap:operation soapAction="urn:webapps_gato#Gato#play"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</output>
+		</operation>
+		
+		<operation name="checkWinner">
+			<soap:operation soapAction="urn:webapps_gato#Gato#checkWinner"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</output>
+		</operation>
+
+		<operation name="getWinner">
+			<soap:operation soapAction="urn:webapps_gato#Gato#getWinner"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</output>
+		</operation>
+
+		<operation name="getBoard">
+			<soap:operation soapAction="urn:webapps_gato#Gato#getBoard"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</output>
+		</operation>
+
+	</binding>
+
+	<!-- Punto de comunicación con la clase Gato -->
+
+	<service name="webapps_gatoService">
+		<port name="webapps_gatoPort" binding="tns:webapps_gatoBinding">
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~bsolano/GatoServiceRPCEncoded/"/>
+		</port>
+	</service>
+
