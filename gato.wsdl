@@ -59,7 +59,7 @@
 			<output message="tns:newGameOut"/>
 		</operation>
 		<operation name="play">
-			<documentation>Gato::play() coloca un 1 o un 0 en una posicion del tablero. Recibe un simbolo (1 o 0) y un indice(mayor que 0 y menor que 9) que representa una posicion en el tablero.
+			<documentation>Gato::play() coloca un 1 o un 0 en una posicion del tablero. Recibe un simbolo (1 o 0) y un indice(mayor que 0 y menor que 9) que representa una posicion en el tablero. Retorna la configuracion del tablero o GAME OVER si el juego termino.
 			</documentation>
 			<input message="tns:playIn"/>
 			<output message="tns:playOut"/>

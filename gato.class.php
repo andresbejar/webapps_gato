@@ -18,15 +18,24 @@ class Gato{
 	}
 
 	public function play($simbolo, $indice){
+		if($this->hayGanador){
+			return "GAME OVER";
+		}
 		if($indice >= 0 && $indice <= 8 && ($simbolo == 0 || $simbolo == 1)){
-			if($this->board[$indice] == -1 && !$this->hayGanador){
+			if($this->board[$indice] == -1){
 				$this->board[$indice] = $simbolo;
 				if($this->checkWinner($simbolo, $indice)){
 					return "GAME OVER";
 				}
+				else{
+					return $this->getBoard();
+				}
 			}
+			else
+				return "INVALID PLAY";
 		}
-		return $this->getBoard();
+		else
+			return "ERROR";
 	}
 
 	public function checkWinner($simbolo, $indice){
