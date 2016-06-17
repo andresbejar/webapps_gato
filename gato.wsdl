@@ -2,7 +2,7 @@
 
 <!-- Descripcion de la clase gato -->
 
-	<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 			 xmlns:tns="urn:webapps_gato"
 			 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
@@ -168,4 +168,4 @@
 			<soap:address location="http://titanic.ecci.ucr.ac.cr/~bsolano/GatoServiceRPCEncoded/"/>
 		</port>
 	</service>
-
+</definitions>
