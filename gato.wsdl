@@ -2,7 +2,7 @@
 
 <!-- Descripcion de la clase gato -->
 
-	<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 			 xmlns:tns="urn:webapps_gato"
 			 xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
@@ -39,7 +39,7 @@
 	</message>
 
 	<message name="getWinnerIn"/>
-		
+
 	<message name="getWinnerOut">
 		<part name="return" type="xsd:string"/>
 	</message>
@@ -88,7 +88,7 @@
 
 	<binding name="webapps_gatoBinding" type="tns:webapps_gatoPort">
 		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
-		
+
 		<operation name="newGame">
 			<soap:operation soapAction="urn:webapps_gato#Gato#newGame"/>
 			<input>
@@ -102,7 +102,7 @@
 						   namespace="urn:webapps_gato"/>
 			</output>
 		</operation>
-		
+
 		<operation name="play">
 			<soap:operation soapAction="urn:webapps_gato#Gato#play"/>
 			<input>
@@ -116,7 +116,7 @@
 						   namespace="urn:webapps_gato"/>
 			</output>
 		</operation>
-		
+
 		<operation name="checkWinner">
 			<soap:operation soapAction="urn:webapps_gato#Gato#checkWinner"/>
 			<input>
@@ -165,7 +165,7 @@
 
 	<service name="webapps_gatoService">
 		<port name="webapps_gatoPort" binding="tns:webapps_gatoBinding">
-			<soap:address location="http://titanic.ecci.ucr.ac.cr/~bsolano/GatoServiceRPCEncoded/"/>
+			<soap:address location="http://titanic.ecci.ucr.ac.cr/~eb37495/TP2/"/>
 		</port>
 	</service>
-
+</definitions>
