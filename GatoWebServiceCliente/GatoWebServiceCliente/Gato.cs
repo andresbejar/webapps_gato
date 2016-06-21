@@ -136,6 +136,10 @@ namespace GatoWebServiceCliente
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
             }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
+            }
             else
             {
                 mostrarEstado(result.Split(','));
@@ -151,6 +155,10 @@ namespace GatoWebServiceCliente
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
+            }
+            else if(result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
             }
             else
             {
@@ -168,6 +176,10 @@ namespace GatoWebServiceCliente
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
             }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
+            }
             else
             {
                 mostrarEstado(result.Split(','));
@@ -183,6 +195,10 @@ namespace GatoWebServiceCliente
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
+            }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
             }
             else
             {
@@ -246,6 +262,10 @@ namespace GatoWebServiceCliente
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
             }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
+            }
             else
             {
                 mostrarEstado(result.Split(','));
@@ -261,6 +281,10 @@ namespace GatoWebServiceCliente
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
+            }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
             }
             else
             {
@@ -278,6 +302,10 @@ namespace GatoWebServiceCliente
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
             }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
+            }
             else
             {
                 mostrarEstado(result.Split(','));
@@ -293,6 +321,10 @@ namespace GatoWebServiceCliente
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
+            }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
             }
             else
             {
