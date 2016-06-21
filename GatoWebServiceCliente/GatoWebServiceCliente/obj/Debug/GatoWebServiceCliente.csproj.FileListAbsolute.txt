@@ -1,0 +1,9 @@
+c:\users\jeffry\documents\visual studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\bin\Debug\GatoWebServiceCliente.exe.config
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\bin\Debug\GatoWebServiceCliente.exe
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\bin\Debug\GatoWebServiceCliente.pdb
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.csprojResolveAssemblyReference.cache
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.Gato.resources
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.Properties.Resources.resources
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.csproj.GenerateResource.Cache
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.exe
+C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.pdb

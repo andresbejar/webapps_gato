@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:webapps_gato" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="webapps_gato" targetNamespace="urn:webapps_gato" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:webapps_gato" />
+  </wsdl:types>
+  <wsdl:message name="newGameIn" />
+  <wsdl:message name="newGameOut" />
+  <wsdl:message name="playIn">
+    <wsdl:part name="simbolo" type="xsd:int" />
+    <wsdl:part name="indice" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="playOut">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="checkWinnerIn" />
+  <wsdl:message name="checkWinnerOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getWinnerIn" />
+  <wsdl:message name="getWinnerOut">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getBoardIn" />
+  <wsdl:message name="getBoardOut">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="loadScoresIn" />
+  <wsdl:message name="loadScoresOut">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="saveScoresIn">
+    <wsdl:part name="ranking" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="saveScoresOut" />
+  <wsdl:portType name="webapps_gatoPort">
+    <wsdl:operation name="newGame">
+      <documentation>Gato::newGame() limpia el tablero e inicia un juego de gato nuevo
+			</documentation>
+      <wsdl:input message="tns:newGameIn" />
+      <wsdl:output message="tns:newGameOut" />
+    </wsdl:operation>
+    <wsdl:operation name="play">
+      <documentation>Gato::play() coloca un 1 o un 0 en una posicion del tablero. Recibe un simbolo (1 o 0) y un indice(mayor que 0 y menor que 9) que representa una posicion en el tablero. Retorna la configuracion del tablero o GAME OVER si el juego termino.
+			</documentation>
+      <wsdl:input message="tns:playIn" />
+      <wsdl:output message="tns:playOut" />
+    </wsdl:operation>
+    <wsdl:operation name="checkWinner">
+      <documentation>Gato::checkWinner() Metodo auxiliar que revisa si existe un ganador en el juego. Retorna verdadero o falso.
+			</documentation>
+      <wsdl:input message="tns:checkWinnerIn" />
+      <wsdl:output message="tns:checkWinnerOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWinner">
+      <documentation>Gato::getWinner() Retorna el ganador, si existe, de la partida actual.
+			</documentation>
+      <wsdl:input message="tns:getWinnerIn" />
+      <wsdl:output message="tns:getWinnerOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBoard">
+      <documentation>Gato::getBoard() Metodo auxiliar, retorna la configuracion actual del tablero.
+			</documentation>
+      <wsdl:input message="tns:getBoardIn" />
+      <wsdl:output message="tns:getBoardOut" />
+    </wsdl:operation>
+    <wsdl:operation name="saveScores">
+      <documentation>Gato::saveScores() Guarda los mejores 10 tiempos de juego
+			</documentation>
+      <wsdl:input message="tns:saveScoresIn" />
+      <wsdl:output message="tns:saveScoresOut" />
+    </wsdl:operation>
+    <wsdl:operation name="loadScores">
+      <documentation>Gato::loadScores() Devuelve los 10 mejores tiempos de juego 
+			</documentation>
+      <wsdl:input message="tns:loadScoresIn" />
+      <wsdl:output message="tns:loadScoresOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="webapps_gatoBinding" type="tns:webapps_gatoPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="newGame">
+      <soap:operation soapAction="urn:webapps_gato#Gato#newGame" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="play">
+      <soap:operation soapAction="urn:webapps_gato#Gato#play" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkWinner">
+      <soap:operation soapAction="urn:webapps_gato#Gato#checkWinner" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWinner">
+      <soap:operation soapAction="urn:webapps_gato#Gato#getWinner" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBoard">
+      <soap:operation soapAction="urn:webapps_gato#Gato#getBoard" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loadScores">
+      <soap:operation soapAction="urn:webapps_gato#Gato#loadScores" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveScores">
+      <soap:operation soapAction="urn:webapps_gato#Gato#saveScores" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:webapps_gato" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="webapps_gatoService">
+    <wsdl:port name="webapps_gatoPort" binding="tns:webapps_gatoBinding">
+      <soap:address location="http://titanic.ecci.ucr.ac.cr/~eb37495/TP2/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
