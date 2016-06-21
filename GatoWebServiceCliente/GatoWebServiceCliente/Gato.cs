@@ -11,18 +11,32 @@ namespace GatoWebServiceCliente
         private int turno;
         private Stopwatch time1;
         private Stopwatch time2;
-        private List <string> puntajes;
+        private List<string> puntajes;
         public Gato()
         {
-            puntajes = new List <string>();            
+            gato = new TITANIC.webapps_gatoPortClient();
+            puntajes = new List<string>();
             InitializeComponent();
-            turno = 0;  // turno empieza con 0 = 'O'
-            turnoText.Text = "Jugador 1";
             time1 = new Stopwatch();
             time2 = new Stopwatch();
+
+            string todos = gato.loadScores();
+            if (todos != "")
+            {
+                string[] scores = todos.Split('\n');
+                foreach (string s in scores)
+                {
+                    if (s != "")
+                    {
+                        puntajes.Add(s);
+                    }
+                }
+            }
+
+            turno = 0;  // turno empieza con 0 = 'O'
+            turnoText.Text = "Jugador 1";
             time1.Start();
             time2.Reset();
-            gato = new TITANIC.webapps_gatoPortClient();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,6 +53,10 @@ namespace GatoWebServiceCliente
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
+            }
+            else if (result == "EMPATE")
+            {
+                mensaje.Text = "EMPATE";
             }
             else
             {
@@ -71,29 +89,33 @@ namespace GatoWebServiceCliente
             time1.Stop();
             time2.Stop();
             mensaje.BackColor = System.Drawing.Color.LightGreen;
-            int ganador = Int32.Parse(gato.getWinner())+1;
+            int ganador = Int32.Parse(gato.getWinner()) + 1;
             string winnerTime;
-            if (ganador == 1) {
+            if (ganador == 1)
+            {
                 winnerTime = String.Format("{0:00}", time1.Elapsed.Seconds);
             }
-            else {
+            else
+            {
                 winnerTime = String.Format("{0:00}", time2.Elapsed.Seconds);
             }
-            mensaje.Text = "Ganó jugador " + (ganador)+ " en: "+ winnerTime +"s";
+            mensaje.Text = "Ganó jugador " + (ganador) + " en: " + winnerTime + "s";
+
             String score = winnerTime + "s" + "    " + "jugador " + ganador;
             puntajes.Add(score);
             puntajes.Sort();
             string top10 = "";
             int length = puntajes.Count;
-            if(length > 10)
+            if (length > 10)
             {
                 length = 10;
             }
-            for(int i = 0; i < length; i++)
+            for (int i = 0; i < length; i++)
             {
                 top10 += puntajes[i] + "\n";
             }
-            gato.saveScores(top10);            
+            gato.saveScores(top10);
+
             button1.Enabled = false;
             button2.Enabled = false;
             button3.Enabled = false;
@@ -125,7 +147,7 @@ namespace GatoWebServiceCliente
         {
             string result = gato.play(turno, 2);
             cambiarTurno();
-            if (result == "GAME OVER")   
+            if (result == "GAME OVER")
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
@@ -141,7 +163,7 @@ namespace GatoWebServiceCliente
         {
             string result = gato.play(turno, 3);
             cambiarTurno();
-            if (result == "GAME OVER")   
+            if (result == "GAME OVER")
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
@@ -157,7 +179,7 @@ namespace GatoWebServiceCliente
         {
             string result = gato.play(turno, 4);
             cambiarTurno();
-            if (result == "GAME OVER")   
+            if (result == "GAME OVER")
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
@@ -171,7 +193,19 @@ namespace GatoWebServiceCliente
 
         private void puntuaciones_Click(object sender, EventArgs e)
         {
-            
+            puntajes.Sort();
+            string top10 = "";
+            int length = puntajes.Count;
+            if (length > 10)
+            {
+                length = 10;
+            }
+
+            for (int i = 0; i < length; i++)
+            {
+                top10 += puntajes[i] + "\n";
+            }
+            MessageBox.Show(top10, "Mejores tiempos");
         }
 
 
@@ -207,7 +241,7 @@ namespace GatoWebServiceCliente
         {
             string result = gato.play(turno, 5);
             cambiarTurno();
-            if (result == "GAME OVER")   
+            if (result == "GAME OVER")
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
@@ -223,7 +257,7 @@ namespace GatoWebServiceCliente
         {
             string result = gato.play(turno, 6);
             cambiarTurno();
-            if (result == "GAME OVER")   
+            if (result == "GAME OVER")
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
@@ -239,7 +273,7 @@ namespace GatoWebServiceCliente
         {
             string result = gato.play(turno, 7);
             cambiarTurno();
-            if (result == "GAME OVER")   
+            if (result == "GAME OVER")
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
@@ -255,7 +289,7 @@ namespace GatoWebServiceCliente
         {
             string result = gato.play(turno, 8);
             cambiarTurno();
-            if (result == "GAME OVER")   
+            if (result == "GAME OVER")
             {
                 mostrarEstado(gato.getBoard().Split(','));
                 mostrarGanador();
@@ -269,7 +303,6 @@ namespace GatoWebServiceCliente
 
         private void juegoNuevo_Click(object sender, EventArgs e)
         {
-
             gato.newGame();
             if (turno == 0)
             {

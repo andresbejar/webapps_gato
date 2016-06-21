@@ -60,10 +60,12 @@ namespace GatoWebServiceCliente.TITANIC {
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:webapps_gato#Gato#saveScores", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        void saveScores(string ranking);
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        bool saveScores(string ranking);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:webapps_gato#Gato#saveScores", ReplyAction="*")]
-        System.Threading.Tasks.Task saveScoresAsync(string ranking);
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        System.Threading.Tasks.Task<bool> saveScoresAsync(string ranking);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:webapps_gato#Gato#loadScores", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
@@ -142,11 +144,11 @@ namespace GatoWebServiceCliente.TITANIC {
             return base.Channel.getBoardAsync();
         }
         
-        public void saveScores(string ranking) {
-            base.Channel.saveScores(ranking);
+        public bool saveScores(string ranking) {
+            return base.Channel.saveScores(ranking);
         }
         
-        public System.Threading.Tasks.Task saveScoresAsync(string ranking) {
+        public System.Threading.Tasks.Task<bool> saveScoresAsync(string ranking) {
             return base.Channel.saveScoresAsync(ranking);
         }
         

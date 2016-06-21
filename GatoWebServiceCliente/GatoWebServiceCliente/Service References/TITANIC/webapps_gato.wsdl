@@ -31,7 +31,9 @@
   <wsdl:message name="saveScoresIn">
     <wsdl:part name="ranking" type="xsd:string" />
   </wsdl:message>
-  <wsdl:message name="saveScoresOut" />
+  <wsdl:message name="saveScoresOut">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
   <wsdl:portType name="webapps_gatoPort">
     <wsdl:operation name="newGame">
       <documentation>Gato::newGame() limpia el tablero e inicia un juego de gato nuevo

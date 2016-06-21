@@ -7,3 +7,12 @@ C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\Gato
 C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.csproj.GenerateResource.Cache
 C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.exe
 C:\Users\Jeffry\Documents\Visual Studio 2015\Projects\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.pdb
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\bin\Debug\GatoWebServiceCliente.exe.config
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.exe
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.pdb
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\bin\Debug\GatoWebServiceCliente.exe
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\bin\Debug\GatoWebServiceCliente.pdb
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.csprojResolveAssemblyReference.cache
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.Gato.resources
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.Properties.Resources.resources
+C:\Users\Jeffry\Documents\GitHub\webapps_gato\GatoWebServiceCliente\GatoWebServiceCliente\obj\Debug\GatoWebServiceCliente.csproj.GenerateResource.Cache
