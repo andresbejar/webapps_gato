@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Descripcion de la clase gato -->
-
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
 			 xmlns:tns="urn:webapps_gato"
@@ -39,7 +38,7 @@
 	</message>
 
 	<message name="getWinnerIn"/>
-
+		
 	<message name="getWinnerOut">
 		<part name="return" type="xsd:string"/>
 	</message>
@@ -48,6 +47,20 @@
 
 	<message name="getBoardOut">
 		<part name="return" type="xsd:string"/>
+	</message>
+
+	<message name="loadScoresIn"/>
+
+	<message name="loadScoresOut">
+		<part name="return" type="xsd:string"/>
+	</message>
+	
+	<message name="saveScoresIn">
+		<part name="ranking" type="xsd:string"/>
+	</message>
+
+	<message name="saveScoresOut">
+		<part name="return" type="xsd:boolean"/>
 	</message>
 
 <!-- Puerto para comunicar con la clase gato -->
@@ -82,13 +95,25 @@
 			<input message="tns:getBoardIn"/>
 			<output message="tns:getBoardOut"/>
 		</operation>
+		<operation name="saveScores">
+			<documentation>Gato::saveScores() Guarda los mejores 10 tiempos de juego
+			</documentation>
+			<input message="tns:saveScoresIn"/>
+			<output message="tns:saveScoresOut"/>
+		</operation>
+		<operation name="loadScores">
+			<documentation>Gato::loadScores() Devuelve los 10 mejores tiempos de juego 
+			</documentation>
+			<input message="tns:loadScoresIn"/>
+			<output message="tns:loadScoresOut"/>
+		</operation>
 	</portType>
 
 	<!-- Vinculación de los llamados con el transporte - RPC, SOAP/Encoded over HTTP -->
 
 	<binding name="webapps_gatoBinding" type="tns:webapps_gatoPort">
 		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
-
+		
 		<operation name="newGame">
 			<soap:operation soapAction="urn:webapps_gato#Gato#newGame"/>
 			<input>
@@ -102,7 +127,7 @@
 						   namespace="urn:webapps_gato"/>
 			</output>
 		</operation>
-
+		
 		<operation name="play">
 			<soap:operation soapAction="urn:webapps_gato#Gato#play"/>
 			<input>
@@ -116,7 +141,7 @@
 						   namespace="urn:webapps_gato"/>
 			</output>
 		</operation>
-
+		
 		<operation name="checkWinner">
 			<soap:operation soapAction="urn:webapps_gato#Gato#checkWinner"/>
 			<input>
@@ -159,6 +184,33 @@
 			</output>
 		</operation>
 
+		<operation name="loadScores">
+			<soap:operation soapAction="urn:webapps_gato#Gato#loadScores"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</output>
+		</operation>
+
+		<operation name="saveScores">
+			<soap:operation soapAction="urn:webapps_gato#Gato#saveScores"/>
+			<input>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</input>
+			<output>
+				<soap:body use="encoded"
+				           encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+						   namespace="urn:webapps_gato"/>
+			</output>
+		</operation>
 	</binding>
 
 	<!-- Punto de comunicación con la clase Gato -->

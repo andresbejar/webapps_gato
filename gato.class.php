@@ -1,20 +1,52 @@
 <?php
 
 class Gato{
-	private $board = array();
-	private $circulo = 0;
-	private $equis = 1;
-	private $hayGanador = false;
-	private $ganador = -1;
+	public $board;
+	public $circulo;
+	public $equis;
+	public $hayGanador;
+	public $ganador;
 
 	public function __construct(){
-
+		$this->board = array();
+		for($i=0; $i<9; $i++) {
+			$this->board[$i] = -1;
+		}
+		$this->circulo = 0;
+		$this->equis = 1;
+		$this->hayGanador = false;
+		$this->ganador = -1;
 	}
 
 	public function newGame(){
-		$this->board = array_fill(0, 9, -1);
+		for ($i=0; $i<9; $i++){
+			$this->board[$i] = -1;
+		}
 		$this->hayGanador = false;
-		$this->ganador = "";
+		$this->ganador = -1;
+	}
+
+	public function saveScores($ranking){
+		 $file = fopen('Highscores.txt', 'w');
+		 if(fputs($file, $ranking)){
+			fclose($file);
+			return true;
+		}
+		 else{
+			fclose($file);
+			return false;
+		}
+	}
+
+	public function loadScores(){
+		$file = fopen('Highscores.txt', 'r');
+		$scores = "";
+		while(($line = fgets($file)) && !feof($file))
+		{
+			$scores = $scores.$line."\n";
+		}
+		fclose($file);
+		return $scores;
 	}
 
 	public function play($simbolo, $indice){
@@ -28,7 +60,18 @@ class Gato{
 					return "GAME OVER";
 				}
 				else{
-					return $this->getBoard();
+					$c = 0;
+					foreach($this->board as $b){
+						if($b != -1){
+							$c++;
+						}
+					}
+					if($c == 9){
+						return "EMPATE";
+					}
+					else{
+						return $this->getBoard();
+					}
 				}
 			}
 			else
@@ -90,9 +133,8 @@ class Gato{
 						else
 							return false;
 					}
-				}	
+				}
 			}
-			
 		}
 		else
 			return false;
@@ -107,13 +149,9 @@ class Gato{
 	}
 
 	public function getBoard(){
-		$tmpBoard = array();
-		foreach ($this->board as $boardValue) { 
-			$tmpBoard[] = $boardValue;
-		}
-		$result = "" . $tmpBoard[0];
-		for($i = 1; $i < 9; $i++) { 
-			$result = $result . "," . $tmpBoard[$i];
+		$result = $this->board[0];
+		for($i = 1; $i < 9; $i++) {
+			$result = $result . "," . $this->board[$i];
 		}
 		return $result;
 	}

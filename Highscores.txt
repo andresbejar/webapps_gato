@@ -1,0 +1,10 @@
+01s    jugador 1
+01s    jugador 1
+02s    jugador 1
+02s    jugador 2
+02s    jugador 2
+03s    jugador 1
+03s    jugador 1
+03s    jugador 1
+07s    jugador 1
+08s    jugador 1
